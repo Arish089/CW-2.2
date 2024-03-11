@@ -7,7 +7,7 @@ import {BrowserRouter} from "react-router-dom"
 import AuthContextMainProvider from './AuthContext/AuthContextMain.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ChakraProvider>
+  <ChakraProvider >
     <AuthContextMainProvider>
     <BrowserRouter>
     <App />

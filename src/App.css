@@ -1,0 +1,21 @@
+
+.nav div a{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(216, 213, 213);
+}
+
+.nav div a:hover{
+    color: rgb(246, 107, 107)
+}
+
+.footer>a{
+    margin-left: 4px;
+    margin-right: 4px;
+    
+}
+.footer>a:hover{
+    color: rgb(123, 174, 233);
+    margin-left: 8px;
+    margin-right: 8px;
+    
+}

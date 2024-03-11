@@ -4,6 +4,10 @@ import IntroPage from '../Pages/IntroPage'
 import Homepage from '../Pages/Homepage'
 import Login from '../Pages/Login'
 import Signup from '../Pages/Signup'
+import Movies from '../Pages/Movies'
+import Series from '../Pages/Series'
+import Anime from '../Pages/Anime'
+import SearchResults from '../Pages/SearchResults'
 
 const AllRoutes
  = () => {
@@ -14,6 +18,10 @@ const AllRoutes
             <Route path='/home' element={<Homepage />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<Signup />}/>
+            <Route path='/movies' element={<Movies />}/>
+            <Route path='/series' element={<Series />}/>
+            <Route path='/anime' element={<Anime />}/>
+            <Route path='/search' element={<SearchResults />}/>
         </Routes>
     </div>
   )
