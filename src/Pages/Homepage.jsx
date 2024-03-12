@@ -1,9 +1,9 @@
 import FetchData from '../Context/Apicontext'
-import { Box,Divider,Heading,Spacer,Tag,Text, AbsoluteCenter } from '@chakra-ui/react'
+import { Box, Heading,Spacer,Tag,Text, Skeleton } from '@chakra-ui/react'
 import { useState,useEffect } from 'react'
 import { FaStar } from 'react-icons/fa'
 import CustomSlider from '../Components/SliderContent'
-import Footer from '../Components/Footer'
+
 
 
 const Homepage = () => {
@@ -87,57 +87,69 @@ const Homepage = () => {
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Trending</Heading><br />
-      <Box ><CustomSlider items={trend}/></Box>
-    </Box>
+      {trend.length > 0 ?(
+      <Box ><CustomSlider items={trend}/></Box>): <Skeleton h='100px' my='10px'/>}
+    </Box>  
+      
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Movies</Heading><br />
-      <Box ><CustomSlider items={popularMov}/></Box>
+      {popularMov.length > 0 ?(
+      <Box ><CustomSlider items={popularMov}/></Box>) :<Skeleton h='100px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Top Rated Series</Heading><br />
-      <Box ><CustomSlider items={topRatedTv}/></Box>
+      {topRatedTv.length > 0 ? (
+      <Box ><CustomSlider items={topRatedTv}/></Box>):<Skeleton h='100px' my='10px'/>  }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular TV Shows</Heading><br />
-      <Box ><CustomSlider items={popularTv}/></Box>
+      {popularTv.length > 0 ? (
+      <Box ><CustomSlider items={popularTv}/></Box>) : <Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Top Rated Movies</Heading><br />
-      <Box ><CustomSlider items={topRatedMov}/></Box>
+      {topRatedMov.length > 0 ? (
+      <Box ><CustomSlider items={topRatedMov}/></Box>):<Skeleton h='200px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Upcoming Movies</Heading><br />
-      <Box ><CustomSlider items={upcomingMov}/></Box>
+      {upcomingMov.length > 0 ?(
+      <Box ><CustomSlider items={upcomingMov}/></Box>): <Skeleton h='200px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Comedy TV Series</Heading><br />
-      <Box ><CustomSlider items={comedyTv}/></Box>
+      {comedyTv.length > 0 ? (
+      <Box ><CustomSlider items={comedyTv}/></Box>):<Skeleton h='200px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Fantasy Movies</Heading><br />
-      <Box ><CustomSlider items={fantasyMov}/></Box>
+      {fantasyMov.length > 0 ? (
+      <Box ><CustomSlider items={fantasyMov}/></Box>):<Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Biggest Blockbusters</Heading><br />
-      <Box ><CustomSlider items={blockBMov}/></Box>
+      {blockBMov.length > 0 ? (
+      <Box ><CustomSlider items={blockBMov}/></Box>): <Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Mysterical Series</Heading><br />
-      <Box ><CustomSlider items={mysteryTv}/></Box>
+      {mysteryTv.length > 0 ? (
+      <Box ><CustomSlider items={mysteryTv}/></Box>):<Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Anime Series</Heading><br />
-      <Box ><CustomSlider items={topanime}/></Box>
+      {topanime.length > 0 ? (
+      <Box ><CustomSlider items={topanime}/></Box>):<Skeleton h='200px' my='10px'/>}
     </Box>
     
     <Spacer />
