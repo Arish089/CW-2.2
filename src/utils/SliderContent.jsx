@@ -61,7 +61,10 @@ export default function CustomSlider({items}) {
       borderRadius='lg'
     />
     <Flex direction={'column'} height='180' mt='6' spacing='3'>
-      <Heading size='md'>{item.original_language === 'ja' ? item.name : item.original_title || item.original_name}</Heading>
+      <Heading size='md'>{
+      item.original_language === 'ja' || item.original_language === 'ko' || item.original_language === 'tr' 
+      ?
+       item.name : item.original_title || item.original_name }</Heading>
       <Text overflowY={'scroll'}>{item.overview}</Text>
     </Flex>
   </CardBody>

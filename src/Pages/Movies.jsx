@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FetchData from '../Context/Apicontext'
 import { Box,Spacer,Tag,Text,Skeleton,Heading } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
-import CustomSlider from '../Components/SliderContent'
+import CustomSlider from '../utils/SliderContent'
 
 const Movies = () => {
 const [bgmov,setBgMov] = useState({})

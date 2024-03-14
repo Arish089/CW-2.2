@@ -2,7 +2,7 @@ import FetchData from '../Context/Apicontext'
 import { Box, Heading,Spacer,Tag,Text, Skeleton } from '@chakra-ui/react'
 import { useState,useEffect } from 'react'
 import { FaStar } from 'react-icons/fa'
-import CustomSlider from '../Components/SliderContent'
+import CustomSlider from '../utils/SliderContent'
 
 
 
@@ -73,6 +73,7 @@ const Homepage = () => {
 
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'} >
+      {bgmov !==  null ?(
     <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgmov.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}
     flexDirection='column-reverse' justifyContent='center'>
@@ -83,7 +84,7 @@ const Homepage = () => {
     </Tag>
     <Tag fontWeight='bold' bg='teal' w='50%' color='white' fontSize={16} px={2} rounded='sm' mx={1}>{bgmov.vote_average}<FaStar size={16} />
     </Tag></Box>
-    </Box>
+    </Box>):<Skeleton h={{base:200,sm:300,md:500,lg:600}} my='10px'/>}
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Trending</Heading><br />

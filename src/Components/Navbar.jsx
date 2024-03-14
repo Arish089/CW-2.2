@@ -4,7 +4,7 @@ import {HamburgerIcon} from '@chakra-ui/icons'
 import {FaUserCircle} from 'react-icons/fa'
 import '../App.css'
 import { useState } from 'react'
-import Searchbar from './Searchbar'
+import Searchbar from '../utils/Searchbar'
 import axios from 'axios'
 
 
@@ -88,7 +88,7 @@ const Navbar = () => {
           
           <Spacer />
         <Box _hover={{color:'red.400'}} h={12} fontSize={20} onClick={handleCloseDrawer}>
-          <Link to='/anime'>Anime</Link></Box>
+          <Link to='/anime'>Anime/Animation</Link></Box>
           
           <Spacer />
         <Box _hover={{color:'red.400'}} h={12} fontSize={20} onClick={handleCloseDrawer}>
