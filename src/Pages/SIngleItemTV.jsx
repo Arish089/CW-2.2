@@ -11,6 +11,7 @@ const [singleCard,setSingleCard] = useState({})
 const [cast,setCast] = useState([])
 const [director,setDirector] = useState([])
 const [videoUrl,setVideoUrl] = useState('')
+const [genres,setGenres] = useState([])
 
 
 const FetchSingleTv=async () =>{
@@ -45,6 +46,7 @@ const FetchSingleTv=async () =>{
     setCast(resp2.data.cast)
 
     setDirector(resp1.data.created_by)
+    setGenres(resp1.data.genres)
     
     } catch (error) {
       console.log(error);
@@ -90,17 +92,18 @@ useEffect(()=>{
     return (index < 4 ? actor.name +', ' : actor.name);
       })}</Text><br />
       <Text color='white' fontSize={20}><span style={{color:'silver'}}>Directed by</span> : {director.map((elem,index)=>{
-        return (index < 1 ? elem.name + ", ": elem.name)})}</Text><br />
-      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Genre</span> : {singleCard.imdb_id}</Text><br />
-      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Released on </span> : {singleCard.release_date}</Text><br />
-      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Runtime </span> : {singleCard.runtime} minutes</Text>
+        return (index < director.length - 1 ? elem.name + ", ": elem.name)})}</Text><br />
+      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Genres</span> : {genres.map((genre,index)=>{
+        return (index < genres.length-1 ? genre.name + ', ' : genre.name)})}</Text><br />
+      <Text color='white' fontSize={20}><span style={{color:'silver'}}>First Aired on </span> : {singleCard.first_air_date}</Text><br />
+      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Runtime </span> : {singleCard.episode_run_time} minutes</Text>
 
     </TabPanel>
     <TabPanel>
-    <Center  >
-       <ReactPlayer url={videoUrl} width='800px'/>
- 
-     </Center>
+    <Text color='white' fontSize={20}><span style={{color:'silver'}}>Number of Seasons</span> : {singleCard.number_of_seasons}</Text><br />
+      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Number of Episodes</span> : {singleCard.number_of_episodes}</Text><br />
+      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Last Aired on </span> : {singleCard.last_air_date}</Text><br />
+      <Text color='white' fontSize={20}><span style={{color:'silver'}}>Status </span> : {singleCard.status}</Text>
     </TabPanel>
   </TabPanels>
 </Tabs>

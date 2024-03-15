@@ -119,8 +119,10 @@ export function CustomSliderTv({items}) {
         <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
     <Img
-      src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-      alt='Green double couch with wooden legs'
+      src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`} 
+      alt={item.original_language === 'ja' || item.original_language === 'ko' || item.original_language === 'tr' 
+      ?
+       item.name : item.original_title || item.original_name}
       borderRadius='lg'
     />
     <Flex direction={'column'} height='180' mt='6' spacing='3'>
