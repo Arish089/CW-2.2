@@ -1,7 +1,8 @@
 import React from 'react'
 import { signInAnonymously } from 'firebase/auth'
 import { auth } from '../AuthContext/Firebase/Config'
-import { Box, Flex,Link,Spacer,Text } from '@chakra-ui/react'
+import { Box, Flex,Spacer,Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import bgImage1 from '../Images/project2bg.jpeg'
 import "../App.css"
 import { useContext } from 'react'
@@ -36,9 +37,9 @@ const IntroPage = () => {
         <Spacer />
         <Box boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} cursor='pointer' justifyContent='center' color='white' rounded='lg'
           _hover={{bgColor:'#2D3748',bgGradient: 'linear(to-b ,black, #FF2400)'}} h={{base:100,md:'inherit'}} display='flex' alignItems='center'>
-            <Link href='/login'_hover={{textDecoration:'none', color:'gray.700'}} > Login</Link>
+            <Link to='/login'_hover={{textDecoration:'none', color:'gray.700'}} > Login</Link>
             /
-        <Link href='/signup'_hover={{textDecoration:'none', color:'gray.700'}} >Signup</Link>
+        <Link to='/signup'_hover={{textDecoration:'none', color:'gray.700'}} >Signup</Link>
         </Box>
         </Flex>
     </Box>
