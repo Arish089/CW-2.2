@@ -99,7 +99,7 @@ const Navbar = () => {
           <Box _hover={{color:'red.400'}} h={12} fontSize={20} onClick={handleCloseDrawer}>
             <Link>Profile</Link>
           </Box>
-          <Box w={'80%'} h={16}  fontSize={20} onClick={handleCloseDrawer}>
+          <Box w={'80%'} h={16}  fontSize={20} >
             <Link to='/search'><Searchbar searchquery={searchquery} handleSearch={handleSearch} setSearchQuery={setSearchQuery}/></Link>
             </Box>
           </VStack>

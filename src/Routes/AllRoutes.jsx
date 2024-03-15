@@ -8,6 +8,8 @@ import Movies from '../Pages/Movies'
 import Series from '../Pages/Series'
 import Anime from '../Pages/Anime'
 import SearchResults from '../Pages/SearchResults'
+import SingleItemPage from '../Pages/SingleItemMov'
+import SIngleItemTV from '../Pages/SIngleItemTV'
 
 const AllRoutes
  = () => {
@@ -22,6 +24,8 @@ const AllRoutes
             <Route path='/series' element={<Series />}/>
             <Route path='/anime' element={<Anime />}/>
             <Route path='/search' element={<SearchResults />}/>
+            <Route path='/detailsMov/:id' element={<SingleItemPage />}/>
+            <Route path='/detailsTV/:id' element={<SIngleItemTV />}/>
         </Routes>
     </div>
   )

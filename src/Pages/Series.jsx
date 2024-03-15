@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FetchData from '../Context/Apicontext'
 import { Box,Spacer,Tag,Text,Skeleton,Heading } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
-import CustomSlider from '../utils/SliderContent'
+import {CustomSliderTv} from '../utils/SliderContent'
 
 const Series = () => {
   const [bgSeries,setBgSeries] = useState({})
@@ -63,11 +63,11 @@ const Series = () => {
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'} mt={{lg:'90px'}}>
       {bgSeries !== undefined? (
-      <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgSeries.backdrop_path}`})`}
+      <Box h={{base:200,sm:300,md:500,lg:600}} overflowY={"scroll"} w={'100%'} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgSeries.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}
     flexDirection='column-reverse' justifyContent='center'>
     <Text color=' #c0c0c0' fontSize={{base:'16',sm:'20',lg:'28'}}  fontWeight='semibold'>{bgSeries.overview}</Text>
-    <Text color=' #c0c0c0' fontSize={{base:'32',sm:'40',lg:'48'}} fontWeight='semibold' w={200}>{bgSeries.original_title}</Text>
+    <Text color=' #c0c0c0' fontSize={{base:'32',sm:'40',lg:'48'}} fontWeight='semibold' w={240}>{bgSeries.original_language === 'ja' ? bgSeries.name || bgSeries.title : bgSeries.original_title || bgSeries.original_name }</Text>
     <Box display='flex' w='150px' justifyContent='space-between'>
       <Tag bg='white' color='teal' w='40%' fontWeight={'bold'} fontSize={16} py={2} pr={3} rounded='sm' >{bgSeries.media_type === 'movie'? 'Movie' : "Series"}
     </Tag>
@@ -79,63 +79,63 @@ const Series = () => {
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Investigation Sagas</Heading><br />
       {crimeTv.length > 0 ?(
-      <Box ><CustomSlider items={crimeTv}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={crimeTv}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Mystery TV</Heading><br />
       {mysteryTv.length > 0 ?(
-      <Box ><CustomSlider items={mysteryTv}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={mysteryTv}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Favorite Sitcoms</Heading><br />
       {comedyTv.length > 0 ?(
-      <Box ><CustomSlider items={comedyTv}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={comedyTv}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Reality Shows</Heading><br />
       {realityshow.length > 0 ?(
-      <Box ><CustomSlider items={realityshow}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={realityshow}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Sci-Fi/Fantasy Gems</Heading><br />
       {sci_fi_fantasy.length > 0 ?(
-      <Box ><CustomSlider items={sci_fi_fantasy}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={sci_fi_fantasy}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Peppy Talk Shows</Heading><br />
       {talkShow.length > 0 ?(
-      <Box ><CustomSlider items={talkShow}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={talkShow}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Daily Soaps</Heading><br />
       {dailySoap.length > 0 ?(
-      <Box ><CustomSlider items={dailySoap}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={dailySoap}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Best of Korea</Heading><br />
       {koreaTv.length > 0 ?(
-      <Box ><CustomSlider items={koreaTv}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={koreaTv}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Turkish Delicacies</Heading><br />
       {turkTv.length > 0 ?(
-      <Box ><CustomSlider items={turkTv}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderTv items={turkTv}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
     </Box>

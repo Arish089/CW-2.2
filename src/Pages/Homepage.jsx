@@ -2,7 +2,7 @@ import FetchData from '../Context/Apicontext'
 import { Box, Heading,Spacer,Tag,Text, Skeleton } from '@chakra-ui/react'
 import { useState,useEffect } from 'react'
 import { FaStar } from 'react-icons/fa'
-import CustomSlider from '../utils/SliderContent'
+import {CustomSliderMov,CustomSliderTv} from '../utils/SliderContent'
 
 
 
@@ -74,12 +74,13 @@ const Homepage = () => {
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'} >
       {bgmov !==  null ?(
-    <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgmov.backdrop_path}`})`}
+    <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} overflowY={"scroll"} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgmov.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}
     flexDirection='column-reverse' justifyContent='center'>
     <Text color=' #c0c0c0' fontSize={{base:'16',sm:'20',lg:'28'}}  fontWeight='semibold'>{bgmov.overview}</Text>
-    <Text color=' #c0c0c0' fontSize={{base:'32',sm:'40',lg:'48'}} fontWeight='semibold' w={200}>{bgmov.original_title}</Text>
-    <Box display='flex' w='150px' justifyContent='space-between'>
+    <Text color=' #c0c0c0' fontSize={{base:'32',sm:'40',lg:'48'}} fontWeight='semibold' w={{md:360}}>{bgmov.original_language === 'ja' ? bgmov.name || bgmov.title : bgmov.original_title || bgmov.original_name }
+    </Text>
+    <Box display='flex' w='150px' justifyContent='space-between' >
       <Tag bg='white' color='teal' w='40%' fontWeight={'bold'} fontSize={16} py={2} pr={3} rounded='sm' >{bgmov.media_type === 'movie'? 'Movie' : "Series"}
     </Tag>
     <Tag fontWeight='bold' bg='teal' w='50%' color='white' fontSize={16} px={2} rounded='sm' mx={1}>{bgmov.vote_average}<FaStar size={16} />
@@ -89,68 +90,68 @@ const Homepage = () => {
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Trending</Heading><br />
       {trend.length > 0 ?(
-      <Box ><CustomSlider items={trend}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={trend}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
       
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Movies</Heading><br />
       {popularMov.length > 0 ?(
-      <Box ><CustomSlider items={popularMov}/></Box>) :<Skeleton h='100px' my='10px'/> }
+      <Box ><CustomSliderMov items={popularMov}/></Box>) :<Skeleton h='100px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Top Rated Series</Heading><br />
       {topRatedTv.length > 0 ? (
-      <Box ><CustomSlider items={topRatedTv}/></Box>):<Skeleton h='100px' my='10px'/>  }
+      <Box ><CustomSliderTv items={topRatedTv}/></Box>):<Skeleton h='100px' my='10px'/>  }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular TV Shows</Heading><br />
       {popularTv.length > 0 ? (
-      <Box ><CustomSlider items={popularTv}/></Box>) : <Skeleton h='200px' my='10px'/>}
+      <Box ><CustomSliderTv items={popularTv}/></Box>) : <Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Top Rated Movies</Heading><br />
       {topRatedMov.length > 0 ? (
-      <Box ><CustomSlider items={topRatedMov}/></Box>):<Skeleton h='200px' my='10px'/> }
+      <Box ><CustomSliderMov items={topRatedMov}/></Box>):<Skeleton h='200px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Upcoming Movies</Heading><br />
       {upcomingMov.length > 0 ?(
-      <Box ><CustomSlider items={upcomingMov}/></Box>): <Skeleton h='200px' my='10px'/> }
+      <Box ><CustomSliderMov items={upcomingMov}/></Box>): <Skeleton h='200px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Comedy TV Series</Heading><br />
       {comedyTv.length > 0 ? (
-      <Box ><CustomSlider items={comedyTv}/></Box>):<Skeleton h='200px' my='10px'/> }
+      <Box ><CustomSliderTv items={comedyTv}/></Box>):<Skeleton h='200px' my='10px'/> }
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Fantasy Movies</Heading><br />
       {fantasyMov.length > 0 ? (
-      <Box ><CustomSlider items={fantasyMov}/></Box>):<Skeleton h='200px' my='10px'/>}
+      <Box ><CustomSliderMov items={fantasyMov}/></Box>):<Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Biggest Blockbusters</Heading><br />
       {blockBMov.length > 0 ? (
-      <Box ><CustomSlider items={blockBMov}/></Box>): <Skeleton h='200px' my='10px'/>}
+      <Box ><CustomSliderMov items={blockBMov}/></Box>): <Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Mysterical Series</Heading><br />
       {mysteryTv.length > 0 ? (
-      <Box ><CustomSlider items={mysteryTv}/></Box>):<Skeleton h='200px' my='10px'/>}
+      <Box ><CustomSliderTv items={mysteryTv}/></Box>):<Skeleton h='200px' my='10px'/>}
     </Box>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Popular Anime Series</Heading><br />
       {topanime.length > 0 ? (
-      <Box ><CustomSlider items={topanime}/></Box>):<Skeleton h='200px' my='10px'/>}
+      <Box ><CustomSliderTv items={topanime}/></Box>):<Skeleton h='200px' my='10px'/>}
     </Box>
     
     <Spacer />

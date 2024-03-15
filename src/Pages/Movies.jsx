@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import FetchData from '../Context/Apicontext'
 import { Box,Spacer,Tag,Text,Skeleton,Heading } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
-import CustomSlider from '../utils/SliderContent'
+import {CustomSliderMov} from '../utils/SliderContent'
 
 const Movies = () => {
 const [bgmov,setBgMov] = useState({})
@@ -82,70 +82,70 @@ useEffect(()=>{
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Classic Thrillers</Heading><br />
       {thriller.length > 0 ?(
-      <Box ><CustomSlider items={thriller}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={thriller}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Eternal Love-Stories</Heading><br />
       {romantic.length > 0 ?(
-      <Box ><CustomSlider items={romantic}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={romantic}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Horror Movies</Heading><br />
       {horror.length > 0 ?(
-      <Box ><CustomSlider items={horror}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={horror}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
     
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Drama Movies</Heading><br />
       {drama.length > 0 ?(
-      <Box ><CustomSlider items={drama}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={drama}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
     
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Marvel on Big Screen</Heading><br />
       {marvel.length > 0 ?(
-      <Box ><CustomSlider items={marvel}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={marvel}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Adventure Ride</Heading><br />
       {adventure.length > 0 ?(
-      <Box ><CustomSlider items={adventure}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={adventure}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Sci-Fi Movies</Heading><br />
       {sci_fi.length > 0 ?(
-      <Box ><CustomSlider items={sci_fi}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={sci_fi}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>War Tales</Heading><br />
       {warMov.length > 0 ?(
-      <Box ><CustomSlider items={warMov}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={warMov}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Movies from TV</Heading><br />
       {tvMov.length > 0 ?(
-      <Box ><CustomSlider items={tvMov}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={tvMov}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>From Paris with Love</Heading><br />
       {frenchMov.length > 0 ?(
-      <Box ><CustomSlider items={frenchMov}/></Box>): <Skeleton h='100px' my='10px'/>}
+      <Box ><CustomSliderMov items={frenchMov}/></Box>): <Skeleton h='100px' my='10px'/>}
     </Box>  
     <Spacer />
 

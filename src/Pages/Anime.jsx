@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import FetchData from '../Context/Apicontext'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Box, FormControl, FormLabel, HStack,Select, SimpleGrid,Flex,Heading,Text,Card,CardBody,Img, Button, Input,Skeleton } from '@chakra-ui/react'
 
@@ -67,6 +67,7 @@ const Anime = () => {
           Anime?.map((item)=>{
             return(
               <Box key={item.id}>
+                <Link to={`/detailsTv/${item.id}`}>
                  <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
     <Img
@@ -83,6 +84,7 @@ const Anime = () => {
     </Flex>
   </CardBody>
 </Card>
+</Link>
               </Box>
             )
           }): <Skeleton h='800px' w='100%' my='10px'/>}
