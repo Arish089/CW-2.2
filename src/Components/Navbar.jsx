@@ -12,10 +12,14 @@ import '../App.css'
 
 
 const Navbar = () => {
+
+  
     const [searchquery,setSearchQuery] = useState('');
     const [searchItem,setSearchItem] = useState([])
    const [isOpen,setisOpen] = useState(false)
    const navigate = useNavigate()
+
+    
 
    const handleToggle = () =>{
     setisOpen(!isOpen)
@@ -48,7 +52,9 @@ const Navbar = () => {
     }
 
     useEffect(()=>{
+    if(searchquery.length > 0){
       navigate(`/search/${searchquery}`)
+    }
     },[searchquery])
   return (<>
   <Box display={{base:'none',lg:'block'}} mt={{lg:'94px'}}>

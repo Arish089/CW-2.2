@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route,useLocation} from 'react-router-dom'
 import IntroPage from '../Pages/IntroPage'
 import Homepage from '../Pages/Homepage'
 import Login from '../Pages/Login'
@@ -10,13 +10,23 @@ import Anime from '../Pages/Anime'
 import SearchResults from '../Pages/SearchResults'
 import SingleItemPage from '../Pages/SingleItemMov'
 import SIngleItemTV from '../Pages/SIngleItemTV'
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 
 const AllRoutes
  = () => {
+
+  const location = useLocation();
+  const excludeNavbarFooter =
+    location.pathname !== '/' &&
+    location.pathname !== '/login' &&
+    location.pathname !== '/signup';
   return (
     <div>
+      {excludeNavbarFooter && <Navbar />}
         <Routes>
-            <Route path='/' element={<IntroPage/>}/>
+          
+            <Route path='/' element={<IntroPage />}/>
             <Route path='/home' element={<Homepage />}/>
             <Route path='/login' element={<Login />}/>
             <Route path='/signup' element={<Signup />}/>
@@ -26,7 +36,9 @@ const AllRoutes
             <Route path='/search/:searchquery' element={<SearchResults />}/>
             <Route path='/detailsMov/:id' element={<SingleItemPage />}/>
             <Route path='/detailsTV/:id' element={<SIngleItemTV />}/>
+            
         </Routes>
+        {excludeNavbarFooter && <Footer />}
     </div>
   )
 }
