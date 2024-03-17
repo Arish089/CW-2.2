@@ -1,6 +1,6 @@
 import { Link, useNavigate,Navigate } from 'react-router-dom'
 import { Box, Text, HStack, Spacer,IconButton,Drawer,DrawerBody,DrawerContent,DrawerOverlay,DrawerCloseButton,Button,DrawerHeader, Divider,
-  FormControl,Input, InputGroup, InputRightAddon, border, VStack, InputRightElement } from '@chakra-ui/react'
+  FormControl,Input,Flex, InputGroup, InputRightAddon, border, VStack, InputRightElement, Center } from '@chakra-ui/react'
 import {HamburgerIcon} from '@chakra-ui/icons'
 import {FaUserCircle} from 'react-icons/fa'
 import React, { useState,useEffect } from 'react'
@@ -92,8 +92,11 @@ const Navbar = () => {
     </Box>
 
     <Box display={{base:'block',lg:'none'}} bg={'#1E1E1E'}>
+      <Flex justifyContent='start' alignItems='center'>
         <IconButton bg={'#1E1E1E'} icon={<HamburgerIcon color='silver' position='fixed' zIndex={10} _hover={{color:'black'}}/>} onClick={handleToggle} />
-      </Box>
+        <Center><Text color='#FF2400' fontSize='63' fontWeight='semibold' fontFamily='sans-serif'>MOVIX_</Text></Center>
+        
+        </Flex></Box>
       <Drawer isOpen={isOpen} onClose={handleToggle} placement="left" bg='#1E1E1E'>
         <DrawerOverlay />
         <DrawerContent bg='#1E1E1E' color='rgb(216, 213, 213)' >
