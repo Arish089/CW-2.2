@@ -1,4 +1,10 @@
+.anonym a:hover{
+    color: rgb(107, 103, 103);    
+}
 
+.SignLog a:hover{
+color: rgb(107, 103, 103);
+}
 .nav div a{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: rgb(216, 213, 213);

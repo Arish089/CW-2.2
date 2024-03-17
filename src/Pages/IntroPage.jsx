@@ -29,17 +29,17 @@ const IntroPage = () => {
      >
         
         <Flex w='50%' minH={200} justifyContent='space-between' direction={{base:'column',md:'row'}} fontWeight='semibold' fontSize='x-large'>
-        <Box boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} color='white' display='flex' h={{base:100,md:'inherit'}}
+        <Box className='anonym' boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} color='white' display='flex' h={{base:100,md:'inherit'}}
         alignItems='center' rounded='lg' justifyContent='center' _hover={{bgColor:'#2D3748',bgGradient: 'linear(to-b ,black, #FF2400)'}} cursor='pointer'
          >
             <Link onClick={signInAnonymous}_hover={{textDecoration:'none', color:'gray.700'}} >Explore as Guest</Link>
             </Box>
         <Spacer />
-        <Box boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} cursor='pointer' justifyContent='center' color='white' rounded='lg'
+        <Box className='SignLog' boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} cursor='pointer' justifyContent='center' color='white' rounded='lg'
           _hover={{bgColor:'#2D3748',bgGradient: 'linear(to-b ,black, #FF2400)'}} h={{base:100,md:'inherit'}} display='flex' alignItems='center'>
-            <Link to='/login'_hover={{textDecoration:'none', color:'gray.700'}} > Login</Link>
+            <Link to='/login' > Login</Link>
             /
-        <Link to='/signup'_hover={{textDecoration:'none', color:'gray.700'}} >Signup</Link>
+        <Link to='/signup' >Signup</Link>
         </Box>
         </Flex>
     </Box>
