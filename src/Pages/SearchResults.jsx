@@ -61,7 +61,7 @@ const SearchResults = () => {
   return (
     <Box>
       <Box mt={{lg:'94px'}} bgColor={'black'} py={10}>
-      <HStack w='20%' m='auto'>
+      <HStack w={{base:'40%',sm:'30%',lg:'20%'}} m='auto'>
         {/**<FormControl>
         
           <FormLabel color='silver' textAlign='center' fontSize={20}>Sort</FormLabel>
@@ -86,7 +86,7 @@ const SearchResults = () => {
         </FormControl>
       </HStack>
       <Box p={10} bg='black'>
-        <SimpleGrid columns={3} gap={10}>
+        <SimpleGrid columns={{base:1,sm:2,md:3}} gap={10}>
           {searchResult.length > 0 ?
           searchResult?.map((item)=>{
             return(

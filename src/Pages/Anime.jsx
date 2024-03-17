@@ -41,7 +41,7 @@ const Anime = () => {
   },[page,sort,filter])
   return (
     <Box mt={{lg:'94px'}} bgColor={'black'} py={10}>
-      <HStack w='20%' m='auto'>
+      <HStack w={{base:'50%',sm:'40%',md:'30%',lg:'20%'}} m='auto'>
         <FormControl>
         <FormLabel color='silver' textAlign='center' fontSize={20}>Filter</FormLabel>
         <Select value={sort} onChange={(e)=>setSort(e.target.value)} color={'blue.300'}>
@@ -62,7 +62,7 @@ const Anime = () => {
         </FormControl>
       </HStack>
       <Box p={10} bg='black'>
-        <SimpleGrid columns={4} gap={10}>
+        <SimpleGrid columns={{base:1,sm:2,md:3}} gap={10}>
           {Anime.length > 0 ?
           Anime?.map((item)=>{
             return(
