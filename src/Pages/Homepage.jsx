@@ -1,9 +1,9 @@
-import FetchData from '../Context/Apicontext'
-import { Box, Heading,Spacer,Tag,Text, Skeleton } from '@chakra-ui/react'
 import { useState,useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Box, Heading,Spacer,Tag,Text, Skeleton } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
 import {CustomSliderMov,CustomSliderTv} from '../utils/SliderContent'
-
+import FetchData from '../Context/Apicontext'
 
 
 const Homepage = () => {
@@ -35,6 +35,7 @@ const Homepage = () => {
     const url11 = '/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=vote_count.desc&with_genres=16&with_origin_country=JP'
     FetchData(url1).then((res)=>{
       setTrend(res.results)
+      console.log(res.results[0]);
       setBgMov(res.results[0])
     
     })
@@ -73,6 +74,7 @@ const Homepage = () => {
 
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'} >
+      <Link to={bgmov.media_type === 'movie' ? `/detailsMov/${bgmov.id}` : `/detailsTv/${bgmov.id}`}>
       {bgmov !==  null ?(
     <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} overflowY={"scroll"} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgmov.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}
@@ -86,6 +88,7 @@ const Homepage = () => {
     <Tag fontWeight='bold' bg='teal' w='50%' color='white' fontSize={16} px={2} rounded='sm' mx={1}>{bgmov.vote_average}<FaStar size={16} />
     </Tag></Box>
     </Box>):<Skeleton h={{base:200,sm:300,md:500,lg:600}} my='10px'/>}
+    </Link>
     <Spacer />
     <Box bg={'black'} py={8}>
       <Heading color={'lightcyan'}>Trending</Heading><br />

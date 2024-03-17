@@ -1,17 +1,21 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { Box, Text, HStack, Spacer,IconButton,Drawer,DrawerBody,DrawerContent,DrawerOverlay,DrawerCloseButton,Button,DrawerHeader, Divider, VStack } from '@chakra-ui/react'
+import { Link, useNavigate,Navigate } from 'react-router-dom'
+import { Box, Text, HStack, Spacer,IconButton,Drawer,DrawerBody,DrawerContent,DrawerOverlay,DrawerCloseButton,Button,DrawerHeader, Divider,
+  FormControl,Input, InputGroup, InputRightAddon, border, VStack } from '@chakra-ui/react'
 import {HamburgerIcon} from '@chakra-ui/icons'
 import {FaUserCircle} from 'react-icons/fa'
-import '../App.css'
-import { useState } from 'react'
-import Searchbar from '../utils/Searchbar'
+import React, { useState,useEffect } from 'react'
+import { FaSearch } from 'react-icons/fa'
 import axios from 'axios'
+import '../App.css'
+
+
 
 
 const Navbar = () => {
     const [searchquery,setSearchQuery] = useState('');
     const [searchItem,setSearchItem] = useState([])
    const [isOpen,setisOpen] = useState(false)
+   const navigate = useNavigate()
 
    const handleToggle = () =>{
     setisOpen(!isOpen)
@@ -19,6 +23,8 @@ const Navbar = () => {
    const handleCloseDrawer=()=>{
     setisOpen(false)
    }
+
+   
 
     const handleSearch = async () =>{
         try {
@@ -40,6 +46,10 @@ const Navbar = () => {
             console.log(error);
         }
     }
+
+    useEffect(()=>{
+      navigate(`/search/${searchquery}`)
+    },[searchquery])
   return (<>
   <Box display={{base:'none',lg:'block'}}>
     <HStack  bg='#1E1E1E' the fontWeight='semibold' fontSize={28} className='nav' gap={6} pr={20} position='fixed' zIndex={10} w={'100%'} top={0}  >
@@ -57,7 +67,15 @@ const Navbar = () => {
           <Link to='/trending'>Trending</Link></Box>
           <Spacer/>
           <Box>
-            <Link to='/search'><Searchbar searchquery={searchquery} handleSearch={handleSearch} setSearchQuery={setSearchQuery}/></Link>
+            <Link><FormControl>
+        <InputGroup>
+    <Input type='search' color='white' placeholder='Search Movies, Series, Anime and more...' value={searchquery} onChange={(e)=> {setSearchQuery(e.target.value)
+    navigate(`/search/${searchquery}`)
+    }}/>
+    <InputRightAddon onClick={handleSearch}  bg='black'><FaSearch /></InputRightAddon>
+    </InputGroup>
+  </FormControl>
+  </Link>
             
           </Box>
           <Box>
@@ -100,7 +118,15 @@ const Navbar = () => {
             <Link>Profile</Link>
           </Box>
           <Box w={'80%'} h={16}  fontSize={20} >
-            <Link to='/search'><Searchbar searchquery={searchquery} handleSearch={handleSearch} setSearchQuery={setSearchQuery}/></Link>
+          <Link><FormControl>
+        <InputGroup>
+    <Input type='search' color='white' placeholder='Search Movies, Series, Anime and more...' value={searchquery} onChange={(e)=> {setSearchQuery(e.target.value)
+    navigate(`/search/${searchquery}`)
+    }}/>
+    <InputRightAddon onClick={handleSearch}  bg='black'><FaSearch /></InputRightAddon>
+    </InputGroup>
+  </FormControl>
+  </Link>
             </Box>
           </VStack>
           </DrawerBody>

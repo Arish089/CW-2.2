@@ -23,7 +23,7 @@ const AllRoutes
             <Route path='/movies' element={<Movies />}/>
             <Route path='/series' element={<Series />}/>
             <Route path='/anime' element={<Anime />}/>
-            <Route path='/search' element={<SearchResults />}/>
+            <Route path='/search/:searchquery' element={<SearchResults />}/>
             <Route path='/detailsMov/:id' element={<SingleItemPage />}/>
             <Route path='/detailsTV/:id' element={<SIngleItemTV />}/>
         </Routes>

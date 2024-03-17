@@ -3,6 +3,7 @@ import FetchData from '../Context/Apicontext'
 import { Box,Spacer,Tag,Text,Skeleton,Heading } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
 import {CustomSliderTv} from '../utils/SliderContent'
+import { Link } from 'react-router-dom'
 
 const Series = () => {
   const [bgSeries,setBgSeries] = useState({})
@@ -62,6 +63,7 @@ const Series = () => {
 
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'} mt={{lg:'90px'}}>
+      <Link to={`/detailsTv/${bgSeries.id}`}>
       {bgSeries !== undefined? (
       <Box h={{base:200,sm:300,md:500,lg:600}} overflowY={"scroll"} w={'100%'} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgSeries.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}
@@ -74,6 +76,7 @@ const Series = () => {
     <Tag fontWeight='bold' bg='teal' w='50%' color='white' fontSize={16} px={2} rounded='sm' mx={1}>{bgSeries.vote_average}<FaStar size={16} />
     </Tag></Box>
     </Box>): <Skeleton h={{base:200,sm:300,md:500,lg:600}} my='10px'/>}
+    </Link>
     <Spacer />
 
     <Box bg={'black'} py={8}>

@@ -3,6 +3,7 @@ import FetchData from '../Context/Apicontext'
 import { Box,Spacer,Tag,Text,Skeleton,Heading } from '@chakra-ui/react'
 import { FaStar } from 'react-icons/fa'
 import {CustomSliderMov} from '../utils/SliderContent'
+import { Link } from 'react-router-dom'
 
 const Movies = () => {
 const [bgmov,setBgMov] = useState({})
@@ -30,6 +31,7 @@ useEffect(()=>{
   const url10 = '/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=10770&with_original_language=en'
   const url11 = '/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_count.desc&with_original_language=fr'
   FetchData(url1).then((res)=>{
+    console.log(res.results[0]);
     setBgMov(res.results[0])
   })
   FetchData(url2).then((res)=>{
@@ -66,6 +68,7 @@ useEffect(()=>{
 
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'}>
+      <Link to={`/detailsMov/${bgmov.id}`}>
       <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgmov.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}
     flexDirection='column-reverse' justifyContent='center'>
@@ -77,6 +80,7 @@ useEffect(()=>{
     <Tag fontWeight='bold' bg='teal' w='50%' color='white' fontSize={16} px={2} rounded='sm' mx={1}>{bgmov.vote_average}<FaStar size={16} />
     </Tag></Box>
     </Box>
+    </Link>
     <Spacer />
 
     <Box bg={'black'} py={8}>
