@@ -28,11 +28,11 @@ const IntroPage = () => {
     <Box display='flex' minH='87vh' justifyContent='center' alignItems='center'
      >
         
-        <Flex w='50%' minH={200} justifyContent='space-between' direction={{base:'column',md:'row'}} fontWeight='semibold' fontSize='x-large'>
+        <Flex w='50%' minH={200} justifyContent='space-between' direction={{base:'column',md:'row'}} fontWeight='semibold' fontSize='x-large' h={{base:250,md:'auto'}}>
         <Box className='anonym' boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} color='white' display='flex' h={{base:100,md:'inherit'}}
-        alignItems='center' rounded='lg' justifyContent='center' _hover={{bgColor:'#2D3748',bgGradient: 'linear(to-b ,black, #FF2400)'}} cursor='pointer'
+        alignItems='center' rounded='lg' justifyContent='center' textAlign='center' _hover={{bgColor:'#2D3748',bgGradient: 'linear(to-b ,black, #FF2400)'}} cursor='pointer'
          >
-            <Link onClick={signInAnonymous}_hover={{textDecoration:'none', color:'gray.700'}} >Explore as Guest</Link>
+            <Link onClick={signInAnonymous} >Explore as Guest</Link>
             </Box>
         <Spacer />
         <Box className='SignLog' boxShadow='Dark lg' bgGradient='linear(to-b, #FF2400, black)' w={{base:'auto',md:'40%'}} cursor='pointer' justifyContent='center' color='white' rounded='lg'
