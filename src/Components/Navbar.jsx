@@ -1,6 +1,6 @@
 import { Link, useNavigate,Navigate } from 'react-router-dom'
 import { Box, Text, HStack, Spacer,IconButton,Drawer,DrawerBody,DrawerContent,DrawerOverlay,DrawerCloseButton,Button,DrawerHeader, Divider,
-  FormControl,Input, InputGroup, InputRightAddon, border, VStack } from '@chakra-ui/react'
+  FormControl,Input, InputGroup, InputRightAddon, border, VStack, InputRightElement } from '@chakra-ui/react'
 import {HamburgerIcon} from '@chakra-ui/icons'
 import {FaUserCircle} from 'react-icons/fa'
 import React, { useState,useEffect } from 'react'
@@ -51,7 +51,7 @@ const Navbar = () => {
       navigate(`/search/${searchquery}`)
     },[searchquery])
   return (<>
-  <Box display={{base:'none',lg:'block'}}>
+  <Box display={{base:'none',lg:'block'}} mt={{lg:'94px'}}>
     <HStack  bg='#1E1E1E' the fontWeight='semibold' fontSize={28} className='nav' gap={6} pr={20} position='fixed' zIndex={10} w={'100%'} top={0}  >
         <Box ><Link to='/home'>
             <Text color='#FF2400' fontSize='63' fontWeight='semibold' fontFamily='sans-serif'>MOVIX_</Text>  
@@ -69,11 +69,12 @@ const Navbar = () => {
           <Box>
             <Link><FormControl>
         <InputGroup>
-    <Input type='search' color='white' placeholder='Search Movies, Series, Anime and more...' value={searchquery} onChange={(e)=> {setSearchQuery(e.target.value)
+    <Input type='search' bg='#1E1E1E' color='white' placeholder='Search Movies, Series, Anime and more...' value={searchquery} onChange={(e)=> {setSearchQuery(e.target.value)
     navigate(`/search/${searchquery}`)
     }}/>
-    <InputRightAddon onClick={handleSearch}  bg='black'><FaSearch /></InputRightAddon>
-    </InputGroup>
+    {
+      <InputRightElement onClick={handleSearch}  bg='siver'><FaSearch /></InputRightElement>
+}</InputGroup>
   </FormControl>
   </Link>
             
