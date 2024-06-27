@@ -75,7 +75,8 @@ const Navbar = () => {
           <Box>
             <Link><FormControl>
         <InputGroup>
-    <Input type='search' bg='#1E1E1E' color='white' placeholder='Search Movies, Series, Anime and more...' value={searchquery} onChange={(e)=> {setSearchQuery(e.target.value)
+    <Input type='search' bg='#1E1E1E' color='white' placeholder='Search Movies, Series, Anime and more...' value={searchquery} onChange={(e)=> {
+      setSearchQuery(e.target.value)
     navigate(`/search/${searchquery}`)
     }}/>
     {

@@ -91,7 +91,8 @@ const SearchResults = () => {
           searchResult?.map((item)=>{
             return(
               <Box key={item.id}>
-                <Link to={item.media_type === 'movie' ? `/detailsMov/${item.id}` : `/detailsTv/${item.id}`}>
+                <Link to={filter === 'movie' ? `/detailsMov/${item.id}` : filter === 'tv' ?`/detailsTv/${item.id}`:
+                  item.media_type === 'movie' ? `/detailsMov/${item.id}` : `/detailsTv/${item.id}` }>
                  <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
     <Img

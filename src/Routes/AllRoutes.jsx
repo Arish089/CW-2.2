@@ -12,6 +12,7 @@ import SingleItemPage from '../Pages/SingleItemMov'
 import SIngleItemTV from '../Pages/SIngleItemTV'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import Profile from '../Pages/Profile'
 
 const AllRoutes
  = () => {
@@ -36,7 +37,9 @@ const AllRoutes
             <Route path='/search/:searchquery' element={<SearchResults />}/>
             <Route path='/detailsMov/:id' element={<SingleItemPage />}/>
             <Route path='/detailsTV/:id' element={<SIngleItemTV />}/>
-            
+            <Route path='/profile' element={
+            <Profile />
+            }></Route>
         </Routes>
         {excludeNavbarFooter && <Footer />}
     </div>
