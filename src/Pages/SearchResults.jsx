@@ -26,16 +26,10 @@ const SearchResults = () => {
     try {
       let resp = await axios({
         method:'get',
-        baseURL: `https://api.themoviedb.org/3`,
-        url:`/search/${filter}?&include_adult=false&language=en-US`,
-        headers:{
-          'accept': 'application/json',
-          'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWVlY2FjNTNkMWY2NWZlYzJlZmM5MTRhMThmMjYxMiIsInN1YiI6IjY1OWFmODA5MGQxMWYyMDIwMmViMjIyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VvH2aM_CCdil6AAuu-KU_0CEReTlj7W8y7Mm7G2EaYQ' 
-        },
+        baseURL: `https://movix-proxyserver.onrender.com/api/search/${searchquery}`,
         params:{
           page: page,
-        query: searchquery
+        filter: filter
       }
       })
       let finalresp = resp.data
@@ -62,20 +56,6 @@ const SearchResults = () => {
     <Box>
       <Box mt={{lg:'94px'}} bgColor={'black'} py={10}>
       <HStack w={{base:'40%',sm:'30%',lg:'20%'}} m='auto'>
-        {/**<FormControl>
-        
-          <FormLabel color='silver' textAlign='center' fontSize={20}>Sort</FormLabel>
-          <Select value={sort} onChange={(e)=>setSort(e.target.value)} color={'blue.300'}>
-            <option value="vote_count.desc"  >Vote Count(descending)</option>
-            <option value="vote_count.asc">Vote Count(ascending)</option>
-            <option value="popularity.desc">Popularity(descending)</option>
-            <option value="popularity.asc">Popularity(ascending)</option>
-            <option value="first_air_date.desc">First Aired (descending)</option>
-            <option value="first_air_date.asc">First Aired (ascending)</option>
-          </Select>
-        
-        </FormControl>
-    */  }
         <FormControl>
           <FormLabel color='silver' textAlign='center' fontSize={20}>Filter</FormLabel>
         <Select value={filter} onChange={(e)=>setFilter(e.target.value)} color={'blue.300'}>

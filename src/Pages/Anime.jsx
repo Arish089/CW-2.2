@@ -15,13 +15,7 @@ const Anime = () => {
      
     let resp = await axios({
       method:'get',
-      baseURL:`https://api.themoviedb.org/3`,
-      url:`/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&with_genres=16`,
-      headers:{
-        'accept': 'application/json',
-        'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWVlY2FjNTNkMWY2NWZlYzJlZmM5MTRhMThmMjYxMiIsInN1YiI6IjY1OWFmODA5MGQxMWYyMDIwMmViMjIyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VvH2aM_CCdil6AAuu-KU_0CEReTlj7W8y7Mm7G2EaYQ' 
-      },
+      baseURL:`https://movix-proxyserver.onrender.com/api/anime`,
       params:{
         page: page,
         sort_by: sort,

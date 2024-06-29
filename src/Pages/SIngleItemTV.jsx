@@ -17,36 +17,15 @@ const [genres,setGenres] = useState([])
 const FetchSingleTv=async () =>{
     try {
      
-    let [resp1,resp2] = await Promise.all([ 
-      axios({
-      method:'get',
-      baseURL:`https://api.themoviedb.org/3`,
-      url:`/tv/${id}?language=en-US`,
-      headers:{
-        'accept': 'application/json',
-        'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWVlY2FjNTNkMWY2NWZlYzJlZmM5MTRhMThmMjYxMiIsInN1YiI6IjY1OWFmODA5MGQxMWYyMDIwMmViMjIyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VvH2aM_CCdil6AAuu-KU_0CEReTlj7W8y7Mm7G2EaYQ' 
-      }
-    }),
-    axios({
-      method:'get',
-      baseURL:`https://api.themoviedb.org/3`,
-      url:`/tv/${id}/credits?language=en-US&append_to_response=videos`,
-      headers:{
-        'accept': 'application/json',
-        'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWVlY2FjNTNkMWY2NWZlYzJlZmM5MTRhMThmMjYxMiIsInN1YiI6IjY1OWFmODA5MGQxMWYyMDIwMmViMjIyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VvH2aM_CCdil6AAuu-KU_0CEReTlj7W8y7Mm7G2EaYQ' 
-      }
-    })
-  ])
-  
-    console.log(resp1.data);
-    setSingleCard(resp1.data)
-    console.log(resp2.data);
-    setCast(resp2.data.cast)
+    let resp = await axios.get(`https://movix-proxyserver.onrender.com/api/tv/${id}`)
+    let response = resp.data  
+    console.log(response.credits);
+    setSingleCard(response.tv)
+    console.log(response);
+    setCast(response.credits.cast)
 
-    setDirector(resp1.data.created_by)
-    setGenres(resp1.data.genres)
+    setDirector(response.tv.created_by)
+    setGenres(response.tv.genres)
     
     } catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box,Text,Tag,Skeleton, Spacer,Tabs,Tab,TabList,TabPanel,TabPanels, Center } from '@chakra-ui/react'
+import { Box,Text,Tag,Skeleton,Tabs,Tab,TabList,TabPanel,TabPanels, Center } from '@chakra-ui/react'
 import ReactPlayer from 'react-player'
 import { useParams } from 'react-router-dom'
 import { FaStar } from 'react-icons/fa'
@@ -13,38 +13,17 @@ const [director,setDirector] = useState('')
 const [videoUrl,setVideoUrl] = useState('')
 
 
-const FetchSingleMov=async () =>{
+const FetchSingleMov = async () =>{
     try {
      
-    let [resp1,resp2] = await Promise.all([ 
-      axios({
-      method:'get',
-      baseURL:`https://api.themoviedb.org/3`,
-      url:`/movie/${id}?language=en-US&append_to_response=videos`,
-      headers:{
-        'accept': 'application/json',
-        'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWVlY2FjNTNkMWY2NWZlYzJlZmM5MTRhMThmMjYxMiIsInN1YiI6IjY1OWFmODA5MGQxMWYyMDIwMmViMjIyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VvH2aM_CCdil6AAuu-KU_0CEReTlj7W8y7Mm7G2EaYQ' 
-      }
-    }),
-    axios({
-      method:'get',
-      baseURL:`https://api.themoviedb.org/3`,
-      url:`/movie/${id}/credits?language=en-US&append_to_response=videos`,
-      headers:{
-        'accept': 'application/json',
-        'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3OWVlY2FjNTNkMWY2NWZlYzJlZmM5MTRhMThmMjYxMiIsInN1YiI6IjY1OWFmODA5MGQxMWYyMDIwMmViMjIyMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VvH2aM_CCdil6AAuu-KU_0CEReTlj7W8y7Mm7G2EaYQ' 
-      }
-    })
-  ])
-  
-    console.log(resp1.data);
-    setSingleCard(resp1.data)
-    setVideoUrl(`https://www.youtube.com/watch?v=${resp1.data.videos.results[0].key}`);
-    console.log(resp2.data.crew);
-    setCast(resp2.data.cast)
-    const crew = resp2.data.crew;
+    let resp = await axios.get(`https://movix-proxyserver.onrender.com/api/movie/${id}`)
+    let response = resp.data
+    console.log(response.credits);
+    setSingleCard(response.movie)
+    setVideoUrl(`https://www.youtube.com/watch?v=${response.movie.videos.results[0].key}`);
+    console.log(response.credits.crew);
+    setCast(response.credits.cast)
+    const crew = response.credits.crew;
   const directorObject = crew.find(member => member.job === 'Director')
   console.log(directorObject.name);
   setDirector(directorObject.name)
@@ -55,8 +34,6 @@ const FetchSingleMov=async () =>{
 
 useEffect(()=>{
     FetchSingleMov()
-    
-    
 },[])
     
   return (
