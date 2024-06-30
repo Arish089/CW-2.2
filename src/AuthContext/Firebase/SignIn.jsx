@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import {  signInWithEmailAndPassword,setPersistence,browserLocalPersistence,signInWithPopup } from "firebase/auth";
+import {  signInWithEmailAndPassword,setPersistence,signInWithPopup,browserSessionPersistence } from "firebase/auth";
 import { auth,googleAuthProvider } from './Config';
 import { FormControl,FormLabel,Input,Box, Flex,Text, Center,Button} from '@chakra-ui/react'
 import { AuthContext } from '../AuthContextMain';
@@ -13,10 +13,10 @@ const Signin = () => {
     const [isPasswordFocused,setisPasswordFocused] = useState(false)
 
     const{setCurrentUser,CurrentUser} = useContext(AuthContext)
-
+     console.log(CurrentUser);
     async function SignInEmail(e){
         e.preventDefault();
-        await setPersistence(auth, browserLocalPersistence);
+        await setPersistence(auth, browserSessionPersistence);
         try {
             const userCredent = await signInWithEmailAndPassword(auth,email,password)
             const user = userCredent.user

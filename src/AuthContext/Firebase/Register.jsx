@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import  {createUserWithEmailAndPassword,browserLocalPersistence,setPersistence,signInWithPopup} from 'firebase/auth';
+import  {createUserWithEmailAndPassword,browserSessionPersistence,setPersistence,signInWithPopup} from 'firebase/auth';
 import { auth,googleAuthProvider } from './Config';
 import { FormControl,FormLabel,Input,Box, Flex, Center,Button,Text} from '@chakra-ui/react'
 import { AuthContext } from '../AuthContextMain';
@@ -16,7 +16,7 @@ const Register = () => {
 
     async function SignUpEmail(e){
         e.preventDefault();
-        await setPersistence(auth, browserLocalPersistence)
+        await setPersistence(auth, browserSessionPersistence)
         try {
           const userCredential = await createUserWithEmailAndPassword(auth,email, password);
           const user = userCredential.user;
