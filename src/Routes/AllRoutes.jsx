@@ -13,6 +13,7 @@ import SIngleItemTV from '../Pages/SIngleItemTV'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Profile from '../Pages/Profile'
+import PrivateRoute from './PrivateRoute'
 
 const AllRoutes
  = () => {
@@ -38,7 +39,9 @@ const AllRoutes
             <Route path='/detailsMov/:id' element={<SingleItemPage />}/>
             <Route path='/detailsTV/:id' element={<SIngleItemTV />}/>
             <Route path='/profile' element={
+              <PrivateRoute>
             <Profile />
+            </PrivateRoute>
             }></Route>
         </Routes>
         {excludeNavbarFooter && <Footer />}
