@@ -26,7 +26,7 @@ const Signin = () => {
         }
         }
         
-        if(CurrentUser!== null){
+        if(CurrentUser && CurrentUser.email!== null){
             return <Navigate to='/home'/>
         }
         
@@ -42,7 +42,7 @@ const Signin = () => {
         return(
             <Flex h='100vh'  justifyContent='center' alignItems='center'>
                 <FormControl w='33%' bg='#171923' boxShadow='large' p={4}>
-                <Box mb={16} bg='#1A202C' mt={8}>
+                <Box mb={16} mt={8}>
                 <FormLabel
           htmlFor="email"
           position="absolute"

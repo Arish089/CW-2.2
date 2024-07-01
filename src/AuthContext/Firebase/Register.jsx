@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react'
-import  {createUserWithEmailAndPassword,browserSessionPersistence,setPersistence,signInWithPopup} from 'firebase/auth';
-import { auth,googleAuthProvider } from './Config';
-import { FormControl,FormLabel,Input,Box, Flex, Center,Button,Text} from '@chakra-ui/react'
+import { useContext, useState } from 'react'
+import  {createUserWithEmailAndPassword,browserSessionPersistence,setPersistence} from 'firebase/auth';
+import { auth} from './Config';
+import { FormControl,FormLabel,Input,Box, Flex, Center} from '@chakra-ui/react'
 import { AuthContext } from '../AuthContextMain';
 import { Navigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
 
 const Register = () => {
     const [email,setEmail] = useState('')
@@ -12,7 +11,7 @@ const Register = () => {
     const [isEmailFocused,setisEmailFocused] = useState(false)
     const [isPasswordFocused,setisPasswordFocused] = useState(false)
 
-    const{setCurrentUser,CurrentUser} = useContext(AuthContext)
+    const{CurrentUser} = useContext(AuthContext)
 
     async function SignUpEmail(e){
         e.preventDefault();
@@ -27,25 +26,15 @@ const Register = () => {
           console.log(error);
         }
       }
-      
-      const signInWithGoogle = async () => {
-        try {
-          const result = await signInWithPopup(auth, googleAuthProvider);
-          const user = result.user;
-          setCurrentUser(user);
-        } catch (error) {
-          console.error(error.message);
-        }
-      }  
-
-        if(CurrentUser!== null){
-            return <Navigate to='/home'/>
-        }
+      if(CurrentUser && CurrentUser.email!== null){
+        return <Navigate to='/home'/>
+    }
         
         return(
-            <Flex h='100vh'  justifyContent='center' alignItems='center'>
-            <FormControl w='33%' bg='#171923' boxShadow='large' p={4}>
-                <Box mb={16} bg='#1A202C' mt={8}>
+            <Flex h='100vh'  justifyContent='center' alignItems='center' >
+            <FormControl w='33%' bg='#171923' boxShadow='large' p={4} rounded='sm' border='2px solid grey'>
+            <Center color='#FF2400' fontSize={{base:'21px',sm:'31px',md:'42px',lg:'63px'}} fontWeight='semibold' fontFamily='sans-serif'>MOVIX_</Center>
+                <Box mb={16}  mt={8}>
                 <FormLabel
           htmlFor="email"
           position="absolute"
@@ -89,10 +78,6 @@ const Register = () => {
                  <Center>
                  <Input mt={10} type="submit" value="SignUp" bg='red.500' 
                  border='none' rounded='none' color='white' w='40%' onClick={SignUpEmail}/>
-                 </Center>
-                 <Text textAlign='center' color='white' fontSize={36}>Or</Text>
-                  <Center>
-                 <Button onClick={signInWithGoogle} fontWeight='bold' m='auto'>Sign In with&nbsp;<FaGoogle color='black'/></Button>
                  </Center>
                  </Box>
                  </FormControl>

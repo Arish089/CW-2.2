@@ -2,18 +2,20 @@ import React, { useContext } from 'react'
 import { AuthContext } from '../AuthContext/AuthContextMain'
 import {Flex,Text,Box} from '@chakra-ui/react';
 import {Link} from 'react-router-dom'
+import '../App.css'
 
 const PrivateRoute = ({children}) => {
     const {CurrentUser} = useContext(AuthContext)
 
-    if (!CurrentUser){
+    if (!CurrentUser || CurrentUser.email === null){
+      console.log(CurrentUser);
         return(      <>
-            <Flex direction='column'>
-                <Link to='/'>
-              <Text textAlign='center' fontSize={24} fontWeight='semibold'>
-                Please login to access profile 
+            <Flex direction='column' >
+              <Box minH={'60vh'} display='flex' alignItems='center' justifyContent='center'>
+              <Text textAlign='center'color='silver' className='content'  fontSize={36} fontWeight='semibold'>
+                Please <Link to='/login'>login</Link> or <Link color='red' to='/signup'>signup</Link> to access profile 
               </Text>
-              </Link>
+              </Box>
             </Flex>
             
             </>)

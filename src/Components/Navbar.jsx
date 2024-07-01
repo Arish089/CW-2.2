@@ -1,14 +1,15 @@
-import { Link, useNavigate,Navigate } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import { Box, Text, HStack, Spacer,IconButton,Drawer,DrawerBody,DrawerContent,DrawerOverlay,DrawerCloseButton,Button,DrawerHeader, Divider,
-  FormControl,Input,Flex, InputGroup, InputRightAddon, border, VStack, InputRightElement, Center } from '@chakra-ui/react'
+  FormControl,Input,Flex, InputGroup, InputRightAddon, VStack, InputRightElement, Center } from '@chakra-ui/react'
 import {HamburgerIcon} from '@chakra-ui/icons'
 import {FaUserCircle} from 'react-icons/fa'
-import React, { useState,useEffect } from 'react'
+import { useState,useEffect, useContext } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import axios from 'axios'
 import '../App.css'
-
-
+import { AuthContext } from '../AuthContext/AuthContextMain'
+import { signOut } from 'firebase/auth'
+import { auth } from '../AuthContext/Firebase/Config'
 
 
 const Navbar = () => {
@@ -19,7 +20,18 @@ const Navbar = () => {
    const [isOpen,setisOpen] = useState(false)
    const navigate = useNavigate()
 
+   const {CurrentUser} = useContext(AuthContext)
     
+   const logout = async ()=>{
+   try {
+    await signOut(auth);
+    console.log('User signed out');
+    navigate('/home')
+    console.log(CurrentUser);
+} catch (error) {
+    console.log('Sign out error',error);
+}
+   }
 
    const handleToggle = () =>{
     setisOpen(!isOpen)
@@ -81,7 +93,20 @@ const Navbar = () => {
             
           </Box>
           <Box>
-            <Link ><FaUserCircle size='36'/></Link>
+            <Link to='/profile' >{!CurrentUser ? <FaUserCircle size='36'/> :
+             <Box color= 'red.400' className='dropdown' _hover={{color:'red.600'}}>
+              <Box className='dropdown-button'>
+              {CurrentUser && CurrentUser.displayName !== null ? CurrentUser.displayName : 'User'}
+             </Box>
+             <Box className='dropdown-content' fontSize={20} color='silver'>
+              <Text>Favorite List</Text>
+              <Divider />
+              <Text>Watch List</Text>
+              <Divider />
+              <Text fontSize={16} color='red.400'>{CurrentUser && CurrentUser.email !== null ? CurrentUser.email: null}</Text>
+              <Button colorScheme='red' onClick={logout}>Logout</Button>
+             </Box>
+             </Box>}</Link>
           </Box>
     </HStack>
     </Box>
@@ -120,7 +145,7 @@ const Navbar = () => {
           
             
           <Box _hover={{color:'red.400'}} h={12} fontSize={20} onClick={handleCloseDrawer}>
-            <Link>Profile</Link>
+            <Link to='/profile'>{!CurrentUser || CurrentUser.email === null ? 'Profile' : <Text>{CurrentUser && CurrentUser.displayName !== null ? CurrentUser.displayName : CurrentUser.email}</Text>}</Link>
           </Box>
           <Box w={'80%'} h={16}  fontSize={20} >
           <Link><FormControl>
@@ -132,6 +157,9 @@ const Navbar = () => {
     </InputGroup>
   </FormControl>
   </Link>
+            </Box>
+            <Box color='#FF2400' _hover={{color:'rgb(216, 213, 213)'}} h={12} fontSize={28} onClick={handleCloseDrawer}>
+              <Text  onClick={()=>{CurrentUser && CurrentUser.email !== null ?logout():navigate('/login')}} fontWeight='semibold' cursor='pointer'>{CurrentUser && CurrentUser.email !== null ?'Logout': 'Login'}</Text>
             </Box>
           </VStack>
           </DrawerBody>
