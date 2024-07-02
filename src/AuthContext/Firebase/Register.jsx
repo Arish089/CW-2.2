@@ -32,7 +32,7 @@ const Register = () => {
         
         return(
             <Flex h='100vh'  justifyContent='center' alignItems='center' >
-            <FormControl w='33%' bg='#171923' boxShadow='large' p={4} rounded='sm' border='2px solid grey'>
+            <FormControl w={{base:'60%',md:'50%',lg:'40%'}} bg='#171923' boxShadow='large' p={4} rounded='sm' border='2px solid grey'>
             <Center color='#FF2400' fontSize={{base:'21px',sm:'31px',md:'42px',lg:'63px'}} fontWeight='semibold' fontFamily='sans-serif'>MOVIX_</Center>
                 <Box mb={16}  mt={8}>
                 <FormLabel

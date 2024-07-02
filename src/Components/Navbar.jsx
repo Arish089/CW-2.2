@@ -93,7 +93,7 @@ const Navbar = () => {
             
           </Box>
           <Box>
-            <Link to='/profile' >{!CurrentUser || CurrentUser.email !== null ? <FaUserCircle size='36'/> :
+            <Link to='/profile' >{!CurrentUser || CurrentUser.email === null ? <FaUserCircle size='36'/> :
              <Box color= 'red.400' className='dropdown' _hover={{color:'red.600'}}>
               <Box className='dropdown-button'>
               {CurrentUser && CurrentUser.displayName !== null ? CurrentUser.displayName : 'User'}

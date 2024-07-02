@@ -41,7 +41,7 @@ const Signin = () => {
           };
         return(
             <Flex h='100vh'  justifyContent='center' alignItems='center'>
-                <FormControl w='33%' bg='#171923' boxShadow='large' p={4}>
+                <FormControl w={{base:'60%',md:'50%',lg:'40%'}} bg='#171923' boxShadow='large' p={4}>
                 <Box mb={16} mt={8}>
                 <FormLabel
           htmlFor="email"
@@ -84,7 +84,7 @@ const Signin = () => {
                 onBlur={() => setisPasswordFocused(false)}
                  onChange={(e)=>setPassword(e.target.value)} color='white'/>
                  <Center>
-                 <Input mt={10} type="submit" value="SignIn" bg='red.500' 
+                 <Input mt={10} type="submit" value="SignIn" padding={2} bg='red.500' 
                  border='none' rounded='none' color='white' w='40%' onClick={SignInEmail}/>
                  </Center>
                   <Text textAlign='center' color='white' fontSize={36}>Or</Text>
