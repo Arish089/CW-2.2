@@ -5,6 +5,7 @@ import { FormControl,FormLabel,Input,Box, Flex,Text, Center,Button} from '@chakr
 import { AuthContext } from '../AuthContextMain';
 import { Navigate } from 'react-router-dom';
 import {FaGoogle} from 'react-icons/fa'
+import axios from 'axios'
 
 const Signin = () => {
     const [email,setEmail] = useState('')
@@ -13,6 +14,19 @@ const Signin = () => {
     const [isPasswordFocused,setisPasswordFocused] = useState(false)
 
     const{setCurrentUser,CurrentUser} = useContext(AuthContext)
+
+    const UserAccess = async()=>{
+      try {
+        const resp = await axios.post(`https://movix-proxyserver.onrender.com/user/login`,{
+          email: `${CurrentUser.email}`,
+          name: `${CurrentUser.displayName}`
+        })
+        const finalresp = resp.data
+        console.log(finalresp);
+      } catch (error) {
+        console.log(error);
+      }
+    }
      console.log(CurrentUser);
     async function SignInEmail(e){
         e.preventDefault();
@@ -21,6 +35,7 @@ const Signin = () => {
             const userCredent = await signInWithEmailAndPassword(auth,email,password)
             const user = userCredent.user
             console.log("User Signed in",user);
+            UserAccess()
         } catch (error) {
             console.log("Sign-In error",error);
         }
