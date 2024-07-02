@@ -4,6 +4,7 @@ import { auth} from './Config';
 import { FormControl,FormLabel,Input,Box, Flex, Center} from '@chakra-ui/react'
 import { AuthContext } from '../AuthContextMain';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios'
 
 const Register = () => {
     const [email,setEmail] = useState('')
@@ -12,6 +13,19 @@ const Register = () => {
     const [isPasswordFocused,setisPasswordFocused] = useState(false)
 
     const{CurrentUser} = useContext(AuthContext)
+
+    const UserAccess = async()=>{
+      try {
+        const resp = await axios.post(`https://movix-proxyserver.onrender.com/user/signup`,{
+          email: `${CurrentUser.email}`,
+          name: `${CurrentUser.displayName}`
+        })
+        const finalresp = resp.data
+        console.log(finalresp);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     async function SignUpEmail(e){
         e.preventDefault();
@@ -22,6 +36,7 @@ const Register = () => {
           
           console.log('User signed up:', user);
           // Optionally, redirect to a different page upon successful signup
+          UserAccess()
         } catch (error) {
           console.log(error);
         }
@@ -29,6 +44,8 @@ const Register = () => {
       if(CurrentUser && CurrentUser.email!== null){
         return <Navigate to='/home'/>
     }
+
+    
         
         return(
             <Flex h='100vh'  justifyContent='center' alignItems='center' >
