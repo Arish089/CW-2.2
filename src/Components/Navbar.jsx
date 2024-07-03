@@ -93,20 +93,20 @@ const Navbar = () => {
             
           </Box>
           <Box>
-            <Link to='/profile' >{!CurrentUser || CurrentUser.email === null ? <FaUserCircle size='36'/> :
+            {!CurrentUser || CurrentUser.email === null ?<Link to='/profile' > <FaUserCircle size='36'/> </Link>:
              <Box color= 'red.400' className='dropdown' _hover={{color:'red.600'}}>
               <Box className='dropdown-button'>
-              {CurrentUser && CurrentUser.displayName !== null ? CurrentUser.displayName : 'User'}
+              {CurrentUser && CurrentUser.displayName !== null ? <Link to='/profile' > {CurrentUser.displayName}</Link> :<Link to='/profile'> User</Link>}
              </Box>
              <Box className='dropdown-content' fontSize={20} color='silver'>
-              <Text>Favorite List</Text>
+              <Link to='/favorite'>Favorite List</Link>
               <Divider />
-              <Text>Watch List</Text>
+              <Link to='/watchlist'>Watch List</Link>
               <Divider />
               <Text fontSize={16} color='red.400'>{CurrentUser && CurrentUser.email !== null ? CurrentUser.email: null}</Text>
               <Button colorScheme='red' onClick={logout}>Logout</Button>
              </Box>
-             </Box>}</Link>
+             </Box>}
           </Box>
     </HStack>
     </Box>

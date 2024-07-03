@@ -5,8 +5,6 @@ import { Box, Flex,Spacer,Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import bgImage1 from '../Images/project2bg.jpeg'
 import "../App.css"
-import { useContext } from 'react'
-import { AuthContext } from '../AuthContext/AuthContextMain'
 import { useNavigate } from 'react-router-dom'
 const IntroPage = () => {
   //const {signInAnonymous} = useContext(AuthContext)

@@ -63,7 +63,7 @@ color: rgb(107, 103, 103);
     justify-content: center;
     align-items: center;
   }
-  .dropdown-content p:hover{
+  .dropdown-content a:hover{
     color: rgb(244, 130, 130);
   }
   .content a{

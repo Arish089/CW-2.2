@@ -15,11 +15,12 @@ const Signin = () => {
 
     const{setCurrentUser,CurrentUser} = useContext(AuthContext)
 
-    const UserAccess = async()=>{
+    const ActiveUser = async(_user)=>{
+      console.log(CurrentUser);
       try {
         const resp = await axios.post(`https://movix-proxyserver.onrender.com/user/login`,{
-          email: `${CurrentUser.email}`,
-          name: `${CurrentUser.displayName}`
+          email: `${_user.email}`,
+          name: `${_user.displayName}`
         })
         const finalresp = resp.data
         console.log(finalresp);
@@ -35,7 +36,7 @@ const Signin = () => {
             const userCredent = await signInWithEmailAndPassword(auth,email,password)
             const user = userCredent.user
             console.log("User Signed in",user);
-            UserAccess()
+            ActiveUser(user)
         } catch (error) {
             console.log("Sign-In error",error);
         }

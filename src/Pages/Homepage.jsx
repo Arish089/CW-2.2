@@ -74,7 +74,7 @@ const Homepage = () => {
 
   return (
     <Box display='flex' flexDirection='column' justifyContent='center' bgColor={'#1E1E1E'} >
-      <Link to={bgmov.media_type === 'movie' ? `/detailsMov/${bgmov.id}` : `/detailsTv/${bgmov.id}`}>
+      <Link to={bgmov.media_type === 'tv' ? `/detailsTv/${bgmov.id}` : `/detailsMov/${bgmov.id}`}>
       {bgmov !==  null ?(
     <Box h={{base:200,sm:300,md:500,lg:600}} w={'100%'} overflowY={"scroll"} bgImage={`url(${`https://image.tmdb.org/t/p/original${bgmov.backdrop_path}`})`}
      bgSize='100%' bgRepeat='repeat-x' display={'flex'}

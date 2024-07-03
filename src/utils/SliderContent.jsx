@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Card,CardBody,Text,Img,Heading, Flex } from '@chakra-ui/react';
+import { Card,CardBody,Text,Img,Heading, Flex,Tag,TagLeftIcon,TagLabel, Tooltip } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { AddIcon } from '@chakra-ui/icons';
 
 
 
@@ -54,7 +55,7 @@ export function CustomSliderMov({items}) {
       >{items.map((item)=>{
         return(<>
         <SwiperSlide key={item.id} >
-          <Link to={`/detailsMov/${item.id}`}>
+          <Link to={item.media_type === 'tv' ? `/detailsTv/${item.id}` : `/detailsMov/${item.id}`}>
         <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
     <Img
@@ -77,6 +78,20 @@ export function CustomSliderMov({items}) {
        item.name || item.title : item.original_title || item.original_name }</Heading>
       <Text overflowY={'scroll'}>{item.overview}</Text>
     </Flex>
+      <Flex justifyContent='space-between' py={4} >
+      <Tag key={item.id} variant='solid' colorScheme='cyan' w='35%' h={12}>
+        <TagLeftIcon as={AddIcon}/>
+      <TagLabel><Tooltip label="Add to Watchlist">
+  Add to Watchlist
+</Tooltip></TagLabel>
+    </Tag>
+    <Tag key={item.id} variant='outline' colorScheme='cyan' w='35%'>
+        <TagLeftIcon as={AddIcon}/>
+      <TagLabel><Tooltip label="Add to Favorites">
+  Add to Favorites
+</Tooltip></TagLabel>
+    </Tag>
+      </Flex>
   </CardBody>
 </Card>
 </Link>
@@ -123,7 +138,7 @@ export function CustomSliderTv({items}) {
       >{items.map((item)=>{
         return(<>
         <SwiperSlide key={item.id} >
-          <Link to={`/detailsTv/${item.id}`}>
+          <Link to={item.media_type === 'movie' ? `/detailsMov/${item.id}` : `/detailsMov/${item.id}`}>
         <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
     <Img
@@ -148,6 +163,20 @@ export function CustomSliderTv({items}) {
        item.name : item.original_title || item.original_name }</Heading>
       <Text overflowY={'scroll'}>{item.overview}</Text>
     </Flex>
+    <Flex justifyContent='space-between' py={4} >
+      <Tag key={item.id} variant='solid' colorScheme='cyan' w='35%' h={12}>
+        <TagLeftIcon as={AddIcon}/>
+      <TagLabel><Tooltip label="Add to Watchlist">
+  Add to Watchlist
+</Tooltip></TagLabel>
+    </Tag>
+    <Tag key={item.id} variant='outline' colorScheme='cyan' w='35%'>
+        <TagLeftIcon as={AddIcon}/>
+      <TagLabel><Tooltip label="Add to Favorites">
+  Add to Favorites
+</Tooltip></TagLabel>
+    </Tag>
+      </Flex>
   </CardBody>
 </Card>
 </Link>

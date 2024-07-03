@@ -14,6 +14,8 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Profile from '../Pages/Profile'
 import PrivateRoute from './PrivateRoute'
+import Watchlist from '../Pages/Watchlist'
+import Favorite from '../Pages/Favorite'
 
 const AllRoutes
  = () => {
@@ -41,6 +43,16 @@ const AllRoutes
             <Route path='/profile' element={
               <PrivateRoute>
             <Profile />
+            </PrivateRoute>
+            }></Route>
+            <Route path='/watchlist' element={
+              <PrivateRoute>
+            <Watchlist />
+            </PrivateRoute>
+            }></Route>
+            <Route path='/favorite' element={
+              <PrivateRoute>
+            <Favorite />
             </PrivateRoute>
             }></Route>
         </Routes>
