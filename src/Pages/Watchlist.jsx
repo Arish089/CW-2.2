@@ -26,7 +26,7 @@ const Watchlist = () => {
     listItems()
   },[])
   return (
-    <Box color='white' p={10} bg='black'>
+    <Box color='white' p={10} bg='black' minH='60vh'>
       <Center>
         <Heading color='white' fontSize={36} >Watchlist</Heading></Center>
       <Flex py={4} fontSize={28} w={{base:'100%',sm:'85%',md:'75%',lg:'50%'}} m='auto' overflowY={'scroll'}>
