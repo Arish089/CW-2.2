@@ -17,7 +17,6 @@ const Favorite = () => {
     })
     const finalresp = await resp.data
     setFavorite(finalresp)
-    console.log(finalresp);
   } catch (error) {
     console.log(error);
   }

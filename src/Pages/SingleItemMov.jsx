@@ -21,11 +21,11 @@ const FetchSingleMov = async () =>{
     console.log(response.credits);
     setSingleCard(response.movie)
     setVideoUrl(`https://www.youtube.com/watch?v=${response.movie.videos.results[0].key}`);
-    console.log(response.credits.crew);
+
     setCast(response.credits.cast)
     const crew = response.credits.crew;
   const directorObject = crew.find(member => member.job === 'Director')
-  console.log(directorObject.name);
+
   setDirector(directorObject.name)
     } catch (error) {
       console.log(error);

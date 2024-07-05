@@ -33,7 +33,6 @@ const SearchResults = () => {
       }
       })
       let finalresp = resp.data
-      console.log(resp.data.results);
       setSearchresult(finalresp.results)
       setTotalPages(finalresp.total_pages)
     } catch (error) {

@@ -8,7 +8,6 @@ const PrivateRoute = ({children}) => {
     const {CurrentUser} = useContext(AuthContext)
 
     if (!CurrentUser || CurrentUser.email === null){
-      console.log(CurrentUser);
         return(      <>
             <Flex direction='column' >
               <Box minH={'60vh'} display='flex' alignItems='center' justifyContent='center'>

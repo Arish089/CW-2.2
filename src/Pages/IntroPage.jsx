@@ -13,7 +13,6 @@ const IntroPage = () => {
     try {
       const result = await signInAnonymously(auth);
       const user = result.user;
-      console.log("Anonymous user signed in:", user);
       navigate('/home') // Log the current user object
     } catch (error) {
       console.error(error.message);

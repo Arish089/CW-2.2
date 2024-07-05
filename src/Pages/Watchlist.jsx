@@ -17,7 +17,6 @@ const Watchlist = () => {
     })
     const finalresp = await resp.data
     setWatchList(finalresp)
-    console.log(finalresp);
   } catch (error) {
     console.log(error);
   }

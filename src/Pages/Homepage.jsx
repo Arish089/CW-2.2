@@ -35,7 +35,6 @@ const Homepage = () => {
     const url11 = '/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=vote_count.desc&with_genres=16&with_origin_country=JP'
     FetchData(url1).then((res)=>{
       setTrend(res.results)
-      console.log(res.results[0]);
       setBgMov(res.results[0])
     
     })
