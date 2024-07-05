@@ -23,7 +23,7 @@ const Profile = () => {
             My Favorites</Flex></Link>
           </Box>
         <Box bg='#1E1E1E' minH='200px' w='40%' maxWidth='400px' rounded='md' border='0.5px solid lightCyan' _hover={{borderColor:'rgb(246, 107, 107)'}}>
-          <Link to='watchlist'>
+          <Link to='/watchlist'>
           <Flex justifyContent='center' h='100%' color='lightCyan'  _hover={{color:'red.400'}} alignItems='center' fontSize={{base:"16px",sm:'24px',md:"32px"}} fontWeight='semibold'>
             My Watchlist
             </Flex>

@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Card,CardBody,Text,Img,Heading, Flex,Tag,TagLeftIcon,TagLabel, Tooltip } from '@chakra-ui/react';
+import React, { useContext, useRef, useState } from 'react';
+import { Card,CardBody,Text,Img,Heading, Flex,Tag,TagLeftIcon,TagLabel, Tooltip, useToast } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,14 +13,16 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { AddIcon } from '@chakra-ui/icons';
+import axios from 'axios'
+import { AuthContext } from '../AuthContext/AuthContextMain';
+import AddToListButton from './AddToList';
 
-
-
-
-
+const url1 = `https://movix-proxyserver.onrender.com/watchlist/list`
+const url2 = `https://movix-proxyserver.onrender.com/favorite/list`
 
 
 export function CustomSliderMov({items}) {
+  const {CurrentUser} = useContext(AuthContext)
   return (
     <>
       <Swiper 
@@ -55,9 +57,10 @@ export function CustomSliderMov({items}) {
       >{items.map((item)=>{
         return(<>
         <SwiperSlide key={item.id} >
-          <Link to={item.media_type === 'tv' ? `/detailsTv/${item.id}` : `/detailsMov/${item.id}`}>
+          
         <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
+  <Link to={item.media_type === 'tv' ? `/detailsTv/${item.id}` : `/detailsMov/${item.id}`}>
     <Img
       src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
       alt='Green double couch with wooden legs'
@@ -78,23 +81,14 @@ export function CustomSliderMov({items}) {
        item.name || item.title : item.original_title || item.original_name }</Heading>
       <Text overflowY={'scroll'}>{item.overview}</Text>
     </Flex>
+    </Link>
       <Flex justifyContent='space-between' py={4} >
-      <Tag key={item.id} variant='solid' colorScheme='cyan' w='35%' h={12}>
-        <TagLeftIcon as={AddIcon}/>
-      <TagLabel><Tooltip label="Add to Watchlist">
-  Add to Watchlist
-</Tooltip></TagLabel>
-    </Tag>
-    <Tag key={item.id} variant='outline' colorScheme='cyan' w='35%'>
-        <TagLeftIcon as={AddIcon}/>
-      <TagLabel><Tooltip label="Add to Favorites">
-  Add to Favorites
-</Tooltip></TagLabel>
-    </Tag>
+      <AddToListButton URL ={url1} id={item.id} media_type={item.media_type || 'movie'} name={item.title || item.name|| item.original_title} user={CurrentUser} label={'Add to Watchlist'} />
+      <AddToListButton URL ={url2} id={item.id} media_type={item.media_type || 'movie'} name={item.title || item.name|| item.original_title} user={CurrentUser} label={'Add to Favorites'} />
       </Flex>
   </CardBody>
 </Card>
-</Link>
+
         </SwiperSlide>
         </>)
       })}
@@ -104,6 +98,7 @@ export function CustomSliderMov({items}) {
   );
 }
 export function CustomSliderTv({items}) {
+  const {CurrentUser} = useContext(AuthContext)
   return (
     <>
       <Swiper 
@@ -138,9 +133,10 @@ export function CustomSliderTv({items}) {
       >{items.map((item)=>{
         return(<>
         <SwiperSlide key={item.id} >
-          <Link to={item.media_type === 'movie' ? `/detailsMov/${item.id}` : `/detailsMov/${item.id}`}>
+
         <Card mb={10} bg={'#1E1E1E'} color={'silver'} gap={4} mx={2}>
   <CardBody>
+  <Link to={item.media_type === 'movie' ? `/detailsMov/${item.id}` : `/detailsTv/${item.id}`}>
     <Img
       src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`} 
       alt={item.original_language === 'ja' || item.original_language === 'ko' || item.original_language === 'tr' 
@@ -163,23 +159,14 @@ export function CustomSliderTv({items}) {
        item.name : item.original_title || item.original_name }</Heading>
       <Text overflowY={'scroll'}>{item.overview}</Text>
     </Flex>
-    <Flex justifyContent='space-between' py={4} >
-      <Tag key={item.id} variant='solid' colorScheme='cyan' w='35%' h={12}>
-        <TagLeftIcon as={AddIcon}/>
-      <TagLabel><Tooltip label="Add to Watchlist">
-  Add to Watchlist
-</Tooltip></TagLabel>
-    </Tag>
-    <Tag key={item.id} variant='outline' colorScheme='cyan' w='35%'>
-        <TagLeftIcon as={AddIcon}/>
-      <TagLabel><Tooltip label="Add to Favorites">
-  Add to Favorites
-</Tooltip></TagLabel>
-    </Tag>
+    </Link>
+    <Flex justifyContent='space-between' py={4}>
+    <AddToListButton URL ={url1} id={item.id} media_type={item.media_type || 'tv'} name={ item.name|| item.original_name} user={CurrentUser} label={'Add to Watchlist'} />
+    <AddToListButton URL ={url2} id={item.id} media_type={item.media_type || 'tv'} name={ item.name|| item.original_name} user={CurrentUser} label={'Add to Favorites'} />
       </Flex>
   </CardBody>
 </Card>
-</Link>
+
         </SwiperSlide>
         </>)
       })}

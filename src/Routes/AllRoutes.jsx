@@ -45,16 +45,19 @@ const AllRoutes
             <Profile />
             </PrivateRoute>
             }></Route>
+
             <Route path='/watchlist' element={
               <PrivateRoute>
             <Watchlist />
             </PrivateRoute>
             }></Route>
+
             <Route path='/favorite' element={
               <PrivateRoute>
             <Favorite />
             </PrivateRoute>
             }></Route>
+            
         </Routes>
         {excludeNavbarFooter && <Footer />}
     </div>
