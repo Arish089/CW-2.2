@@ -23,7 +23,6 @@ const Signin = () => {
           name: `${_user.displayName}`
         })
         const finalresp = resp.data
-        console.log(finalresp);
       } catch (error) {
         console.log(error);
       }
@@ -35,7 +34,7 @@ const Signin = () => {
         try {
             const userCredent = await signInWithEmailAndPassword(auth,email,password)
             const user = userCredent.user
-            console.log("User Signed in",user);
+            console.log("User Signed in");
             ActiveUser(user)
         } catch (error) {
             console.log("Sign-In error",error);
