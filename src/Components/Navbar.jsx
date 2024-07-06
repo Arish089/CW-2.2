@@ -27,7 +27,6 @@ const Navbar = () => {
     await signOut(auth);
     console.log('User signed out');
     navigate('/home')
-    console.log(CurrentUser);
 } catch (error) {
     console.log('Sign out error',error);
 }

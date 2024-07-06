@@ -16,7 +16,6 @@ const Signin = () => {
     const{setCurrentUser,CurrentUser} = useContext(AuthContext)
 
     const ActiveUser = async(_user)=>{
-      console.log(CurrentUser);
       try {
         const resp = await axios.post(`https://movix-proxyserver.onrender.com/user/login`,{
           email: `${_user.email}`,
@@ -27,7 +26,6 @@ const Signin = () => {
         console.log(error);
       }
     }
-     console.log(CurrentUser);
     async function SignInEmail(e){
         e.preventDefault();
         await setPersistence(auth, browserSessionPersistence);
