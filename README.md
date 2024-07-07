@@ -22,9 +22,6 @@ An application that provides comprehensive information about movies, series, and
 - **Profile Management**: Access to a profile section for authenticated users to manage their watchlist and favorites.
 - **Proxy Server**: Developed a Node.js and Express proxy server to reroute requests to TMDB API due to government restrictions.
 
-## Demo
-- ![Movix_](https://ibb.co/GTcC90P)
-
 ## Technologies Used
 - **Frontend**: React, Chakra UI
 - **Backend**: Node.js, Express
