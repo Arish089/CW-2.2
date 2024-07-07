@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { AuthContext } from '../AuthContext/AuthContextMain'
-import { Box, Center, Divider, Flex, Heading, List, ListIcon, ListItem, Spacer, Text } from '@chakra-ui/react'
-import {FaFilm, FaTrash} from 'react-icons/fa'
+import { Box, Button, Center, Divider, Flex, Heading, List, ListIcon, ListItem, Spacer, Text } from '@chakra-ui/react'
+import {FaCircleNotch, FaFilm, FaSadTear, FaTrash} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 const Favorite = () => {
@@ -42,7 +42,7 @@ const Favorite = () => {
   return (
     <Box color='white' p={10} bg='black' minH='60vh'>
       <Center>
-        <Heading color='white' fontSize={36} >Favorite</Heading></Center>
+        <Heading color='white' fontSize={36} >{favorite.length>0 ?'Favorite':null}</Heading></Center>
       <Flex py={4} fontSize={28} w={{base:'100%',sm:'85%',md:'75%',lg:'50%'}} m='auto' overflowY={'scroll'}>
       <List spacing={3} w='100%' bg='#1E1E1E' rounded='md' px={4}>
     {favorite.length>0 ? 
@@ -61,7 +61,16 @@ const Favorite = () => {
   </ListItem>
        </>)
     })
-    :null}
+    :(    <Center w='100%' p={4}>        <Box textAlign="center" color="Silver">
+      <Flex justifyContent='center' color='red.400' gap={2}><Text fontWeight='semibold' fontSize='x-large' mb={4}>Your Favorite list is empty</Text>
+      <Box pt={1.5}>< FaSadTear /></Box>
+      </Flex>
+      <Text mb={4}>Start adding your favorite movies and TV shows to your Favorite!</Text>
+      <Button colorScheme="red" variant="solid" as={Link} to="/home">
+        Explore Now
+      </Button>
+    </Box>
+  </Center>)}
     </List>
     </Flex>
     </Box>
