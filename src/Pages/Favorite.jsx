@@ -25,6 +25,20 @@ const Favorite = () => {
   useEffect(()=>{
     listItems()
   },[])
+
+  const handleDelete = async(id)=>{
+    try {
+      const resp = await axios({
+        method:"delete",
+        url:`https://movix-proxyserver.onrender.com/favorite/delete/${id}`
+      })
+      const finalresp = resp.data
+      console.log(finalresp);
+      listItems()
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Box color='white' p={10} bg='black' minH='60vh'>
       <Center>
@@ -34,17 +48,17 @@ const Favorite = () => {
     {favorite.length>0 ? 
     favorite.map((item)=>{
       return(<>
-      <Link to={item.mediaType === 'movie' ? `/detailsMov/${item.content_id}`: `/detailsTV/${item.content_id}`}>
     <ListItem my={8} color='lightCyan' _hover={{color:'red.200'}} cursor='pointer'>
       <Flex alignItems='center'  >
     <ListIcon as={FaFilm}  />   
+      <Link to={item.mediaType === 'movie' ? `/detailsMov/${item.content_id}`: `/detailsTV/${item.content_id}`}>
    <Text >{item.title}</Text> 
+  </Link>
     <Spacer />
-    <ListIcon as={FaTrash} _hover={{color:'red.500'}}/>
+    <ListIcon as={FaTrash} onClick={()=>handleDelete(item._id)} _hover={{color:'red.500'}}/>
     
     </Flex>
   </ListItem>
-  </Link>
        </>)
     })
     :null}

@@ -25,6 +25,20 @@ const Watchlist = () => {
   useEffect(()=>{
     listItems()
   },[])
+const handleDelete = async(id)=>{
+  try {
+    const resp = await axios({
+      method:"delete",
+      url:`https://movix-proxyserver.onrender.com/watchlist/delete/${id}`
+    })
+    const finalresp = resp.data
+    console.log(finalresp);
+    listItems()
+  } catch (error) {
+    console.log(error);
+  }
+}
+
   return (
     <Box color='white' p={10} bg='black' minH='60vh'>
       <Center>
@@ -33,19 +47,20 @@ const Watchlist = () => {
       <List spacing={3} w='100%' bg='#1E1E1E' rounded='md' px={4}>
     {watchList.length>0 ? 
     watchList.map((item)=>{
-      return(<>
-      <Link to={item.mediaType === 'movie' ? `/detailsMov/${item.content_id}`: `/detailsTV/${item.content_id}`}>
+      return(<Box 
+      key={item._id}>
     <ListItem my={8} color='lightCyan' _hover={{color:'red.200'}} cursor='pointer'>
       <Flex alignItems='center'  >
     <ListIcon as={FaFilm}  />   
-   <Text >{item.title}</Text> 
+      <Link to={item.mediaType === 'movie' ? `/detailsMov/${item.content_id}`: `/detailsTV/${item.content_id}`}>
+      {item.title}
+  </Link>
     <Spacer />
-    <ListIcon as={FaTrash} _hover={{color:'red.500'}}/>
+    <ListIcon as={FaTrash} onClick={()=>handleDelete(item._id)} _hover={{color:'red.500'}}/>
     
     </Flex>
   </ListItem>
-  </Link>
-       </>)
+       </Box>)
     })
     :null}
     </List>
