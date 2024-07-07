@@ -23,7 +23,7 @@ An application that provides comprehensive information about movies, series, and
 - **Proxy Server**: Developed a Node.js and Express proxy server to reroute requests to TMDB API due to government restrictions.
 
 ## Demo
-- Screenshots or links to demo videos showcasing the application's user interface and functionality.
+- (https://ibb.co/GTcC90P)
 
 ## Technologies Used
 - **Frontend**: React, Chakra UI
